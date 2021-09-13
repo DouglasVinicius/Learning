@@ -18,10 +18,12 @@ def jogar():
         try:
             letra_repetida = False
             rodada += 1
+            letras_faltando = palavra_na_tela.count('_')
 
             print("Palavra secreta até o momento: ")
             for i in palavra_na_tela:
                 print(i, end=' ')
+            print("\nVocê acertou {} de {} letras da palavra secreta!".format(len(palavra_na_tela)-letras_faltando, len(palavra_na_tela)))
             letra_usuario = input("\n\nDigite sua letra de A a Z (não há distinção entre letras minúsculas e maiúsculas), ou '0' para sair: ").lower().replace(" ", "")
 
             try:
