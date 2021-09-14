@@ -89,6 +89,24 @@ class Adivinhacao:
                 print("Valor inválido, por favor digite um valor de 1 a 100, ou 'q'!", end="\n\n")
         return 0
 
+    def imprime_mensagem_final(self, result):
+        if(result):
+            print("                                                       _|            _|  _|  _|  ")
+            print(" _|    _|    _|_|    _|    _|      _|      _|      _|      _|_|_|    _|  _|  _|  ")
+            print(" _|    _|  _|    _|  _|    _|      _|      _|      _|  _|  _|    _|  _|  _|  _|  ")
+            print(" _|    _|  _|    _|  _|    _|        _|  _|  _|  _|    _|  _|    _|              ")
+            print("   _|_|_|    _|_|      _|_|_|          _|      _|      _|  _|    _|  _|  _|  _|  ")
+            print("       _|                                                                        ")
+            print("   _|_|                                                                          ")
+        else:
+            print("                                   _|                                _|  _|  _|  ")
+            print(" _|    _|    _|_|    _|    _|      _|    _|_|      _|_|_|    _|_|    _|  _|  _|  ")
+            print(" _|    _|  _|    _|  _|    _|      _|  _|    _|  _|_|      _|_|_|_|  _|  _|  _|  ")
+            print(" _|    _|  _|    _|  _|    _|      _|  _|    _|      _|_|  _|                    ")
+            print("   _|_|_|    _|_|      _|_|_|      _|    _|_|    _|_|_|      _|_|_|  _|  _|  _|  ")
+            print("       _|                                                                        ")
+            print("   _|_|                                                                          ")
+
     def jogar(self):
         print("***********************************************")
         print("*******Bem vindo ao jogo de adivinhação!*******")
@@ -100,3 +118,6 @@ class Adivinhacao:
 
         if(resultado == 0):
             print("\nSuas tentativas terminaram!", "O número secreto era o {}.".format(self.numero_adivinhar),"Obrigado por jogar, mais sorte da próxima vez!", sep="\n")
+            self.imprime_mensagem_final(False)
+        else:
+            self.imprime_mensagem_final(True)
