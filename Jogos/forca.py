@@ -1,9 +1,14 @@
+import random
+
 def jogar():
     print("***********************************************")
     print("**********Bem vindo ao jogo de Forca!**********")
     print("***********************************************", end="\n\n")
 
-    palavra_adivinhar = "palavra".lower()
+    opcoes_palavras = open("palavras_forca.txt", "r").readlines()
+    palavra_sorteada = random.randrange(0, len(opcoes_palavras))
+
+    palavra_adivinhar = opcoes_palavras[palavra_sorteada].lower().strip()
     palavra_na_tela = ["_" for letra in palavra_adivinhar]
 
     enforcou = False
