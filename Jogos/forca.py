@@ -5,7 +5,8 @@ def jogar():
     print("**********Bem vindo ao jogo de Forca!**********")
     print("***********************************************", end="\n\n")
 
-    opcoes_palavras = open("palavras_forca.txt", "r").readlines()
+    with open("palavras_forca.txt", "r") as arquivo:
+        opcoes_palavras = arquivo.readlines()
     palavra_sorteada = random.randrange(0, len(opcoes_palavras))
 
     palavra_adivinhar = opcoes_palavras[palavra_sorteada].lower().strip()
