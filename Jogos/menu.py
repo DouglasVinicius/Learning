@@ -17,7 +17,7 @@ def menu_de_jogos():
 
                     if(opcao == 'q'):
                         print("Até a próxima partida!")
-                        break
+                        return
                     elif(int(opcao) == 1):
                         adivinhacao.jogar()
                         break
