@@ -101,8 +101,34 @@ class Forca:
 
     def resultado(self, palavra_adivinhar):
         if(self.enforcou):
+            print("    _______________         ")
+            print("   /               \       ")
+            print("  /                 \      ")
+            print("//                   \/\  ")
+            print("\|   XXXX     XXXX   | /   ")
+            print(" |   XXXX     XXXX   |/     ")
+            print(" |   XXX       XXX   |      ")
+            print(" |                   |      ")
+            print(" \__      XXX      __/     ")
+            print("   |\     XXX     /|       ")
+            print("   | |           | |        ")
+            print("   | I I I I I I I |        ")
+            print("   |  I I I I I I  |        ")
+            print("   \_             _/       ")
+            print("     \_         _/         ")
+            print("       \_______/           ")
             print("\nSuas tentativas terminaram e o personagem foi enforcado!", "A palavra secreta era a '{}'.".format(palavra_adivinhar),"Obrigado por jogar, mais sorte da próxima vez!", sep="\n")
         else:
+            print("       ___________      ")
+            print("      '._==_==_=_.'     ")
+            print("      .-\\:      /-.    ")
+            print("     | (|:.     |) |    ")
+            print("      '-|:.     |-'     ")
+            print("        \\::.    /      ")
+            print("         '::. .'        ")
+            print("           ) (          ")
+            print("         _.' '._        ")
+            print("        '-------'       ")
             print("Parabéns, você adivinhou toda a palavra e conseguiu ganhar o jogo!")
 
     def jogar(self):
