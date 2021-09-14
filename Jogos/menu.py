@@ -13,25 +13,25 @@ def menu_de_jogos():
     while(True):
         if(jogar_novamente == 1):
             while(True):
-                # try:
-                print("Qual das opções abaixo você gostaria de jogar?")
-                print("(1) Adivinhação  (2) Forca  (q) Sair")
-                opcao = input("Digite sua escolha: ")
+                try:
+                    print("Qual das opções abaixo você gostaria de jogar?")
+                    print("(1) Adivinhação  (2) Forca  (q) Sair")
+                    opcao = input("Digite sua escolha: ")
 
-                if(opcao == 'q'):
-                    print("Até a próxima partida!")
-                    return
-                elif(int(opcao) == 1):
-                    adivinhacao.jogar()
-                    break
-                elif(int(opcao) == 2):
-                    forca.jogar()
-                    break
-                else:
+                    if(opcao == 'q'):
+                        print("Até a próxima partida!")
+                        return
+                    elif(int(opcao) == 1):
+                        adivinhacao.jogar()
+                        break
+                    elif(int(opcao) == 2):
+                        forca.jogar()
+                        break
+                    else:
+                        print("Valor inválido, digite novamente!")
+                        continue
+                except:
                     print("Valor inválido, digite novamente!")
-                    continue
-                # except:
-                #     print("Valor inválido, digite novamente!")
 
         try:
             jogar_novamente = int(input("\nJogar novamente?\n   1 - Sim\n   2 - Não\n\nResposta: "))
