@@ -15,18 +15,11 @@ def jogar():
         try:
             print("Antes de iniciarmos, qual dificuldade você deseja para o jogo?")
             print("(1) Muito fácil  (2) Fácil  (3) Médio  (4) Difícil  (5) Impossível")
-            dificuldade = int(input("Digite sua escolha: "))
+            index_dificuldade = int(input("Digite sua escolha: "))
+            dificuldades = (50, 30, 15, 8, 3)
 
-            if(dificuldade == 1):
-                quantidade_de_tentativas_iniciais = 50
-            elif(dificuldade == 2):
-                quantidade_de_tentativas_iniciais = 30
-            elif(dificuldade == 3):
-                quantidade_de_tentativas_iniciais = 15
-            elif(dificuldade == 4):
-                quantidade_de_tentativas_iniciais = 8
-            elif(dificuldade == 5):
-                quantidade_de_tentativas_iniciais = 3
+            if(index_dificuldade >= 1 and index_dificuldade <= 5):
+                quantidade_de_tentativas_iniciais = dificuldades[index_dificuldade-1]
             else:
                 print("Escolha incorreta, por favor digite uma opção válida!")
                 continue
