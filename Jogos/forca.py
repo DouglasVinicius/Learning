@@ -10,11 +10,16 @@ class Forca:
         self.letras_anteriores = []
 
     def escolhe_palavra(self):
-        with open("palavras_forca.txt", "r") as arquivo:
-            opcoes_palavras = arquivo.readlines()
-        palavra_sorteada = random.randrange(0, len(opcoes_palavras))
+        while(True):
+            try:
+                nome_arquivo = input("Informe o nome do arquivo que contém as opções de palavras a serem utilizadas: ")
+                with open(nome_arquivo, "r") as arquivo:
+                    opcoes_palavras = arquivo.readlines()
+                palavra_sorteada = random.randrange(0, len(opcoes_palavras))
 
-        return opcoes_palavras[palavra_sorteada].lower().strip()
+                return opcoes_palavras[palavra_sorteada].lower().strip()
+            except:
+                print("Nome de arquivo inválido, tente novamente! \n")
 
     def escolhe_dificuldade(self):
         while(True):
