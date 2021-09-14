@@ -42,52 +42,60 @@ class Forca:
             print(anteriores, end=", ")
         print("]")
 
-        return letra_repetida
+        if(letra_repetida):
+            print("\nEssa letra já foi escolhida, por favor tente escolher novas letras!", "Lembre-se que letras maiúsculas e minúsculas são interpretadas da mesma forma!", sep="\n", end="\n\n")
+
+    def informa_jogador(self, palavra):
+        letras_faltando = palavra.count('_')
+
+        print("Palavra secreta até o momento: ")
+        for i in palavra:
+            print(i, end=' ')
+        print("\nVocê acertou {} de {} letras da palavra secreta e errou {} de {} vezes!".format(len(palavra)-letras_faltando, len(palavra), self.erros, self.quantidade_de_tentativas))
+
+    def coleta_entrada(self):
+        return input("\n\nDigite sua letra de A a Z (não há distinção entre letras minúsculas e maiúsculas), ou '0' para sair: ").lower().replace(" ", "")
+
+    def verifica_saida(self, letra_usuario):
+        try:
+            sair = (int(letra_usuario) == 0)
+        except:
+            sair = False
+
+        return sair
 
     def main_loop(self, palavra_adivinhar, palavra_na_tela):
         while((not self.enforcou) and (not self.palavra_descoberta)):
             try:
-                letras_faltando = palavra_na_tela.count('_')
+                self.informa_jogador(palavra_na_tela)
+                letra_usuario = self.coleta_entrada()
 
-                print("Palavra secreta até o momento: ")
-                for i in palavra_na_tela:
-                    print(i, end=' ')
-                print("\nVocê acertou {} de {} letras da palavra secreta e errou {} de {} vezes!".format(len(palavra_na_tela)-letras_faltando, len(palavra_na_tela), self.erros, self.quantidade_de_tentativas))
+                sair = self.verifica_saida(letra_usuario)
+                self.verifica_imprime_repeticoes(letra_usuario)
 
-                letra_usuario = input("\n\nDigite sua letra de A a Z (não há distinção entre letras minúsculas e maiúsculas), ou '0' para sair: ").lower().replace(" ", "")
-                try:
-                    sair = (int(letra_usuario) == 0)
-                except:
-                    sair = False
-
-                if(not sair):
+                if(sair):
+                    print("A palavra secreta era a '{}'.".format(palavra_adivinhar),"Obrigado por jogar, mais sorte da próxima vez!")
+                    return
+                else:
                     if(ord(letra_usuario) < 97 or ord(letra_usuario) > 122):
                         print("Valor inválido, por favor digite uma letra de A a Z, ou '0'!", end="\n\n")
                         continue
 
-                letra_repetida = self.verifica_imprime_repeticoes(letra_usuario)
+                for index in range (0, len(palavra_adivinhar)):
+                    if(palavra_adivinhar[index] == letra_usuario):
+                        palavra_na_tela[index] = letra_usuario
+                        self.acertou = True       
 
-                if(letra_repetida):
-                    print("\nEssa letra já foi escolhida, por favor tente escolher novas letras!", "Lembre-se que letras maiúsculas e minúsculas são interpretadas da mesma forma!", sep="\n", end="\n\n")
+                if(self.acertou):
+                    print("\nParabéns, a letra escolhida está contida na palavra!")
+                    self.palavra_descoberta = "_" not in palavra_na_tela
                 else:
-                    if(sair):
-                        print("A palavra secreta era a '{}'.".format(palavra_adivinhar),"Obrigado por jogar, mais sorte da próxima vez!")
-                        return
-                    for index in range (0, len(palavra_adivinhar)):
-                        if(palavra_adivinhar[index] == letra_usuario):
-                            palavra_na_tela[index] = letra_usuario
-                            self.acertou = True       
+                    self.erros += 1
+                    print("Que pena, a letra escolhida não está contida na palavra secreta!", "Tente denovo", sep="\n")
 
-                    if(self.acertou):
-                        print("\nParabéns, a letra escolhida está contida na palavra!")
-                        self.palavra_descoberta = "_" not in palavra_na_tela
-                    else:
-                        self.erros += 1
-                        print("Que pena, a letra escolhida não está contida na palavra secreta!", "Tente denovo", sep="\n")
-
-                    self.enforcou = self.erros == self.quantidade_de_tentativas
-                    self.acertou = False
-                    self.letras_anteriores.append(letra_usuario)
+                self.enforcou = self.erros == self.quantidade_de_tentativas
+                self.acertou = False
+                self.letras_anteriores.append(letra_usuario)
             except:
                 print("Valor inválido, por favor digite uma letra de A a Z, ou '0'!", end="\n\n")
 
