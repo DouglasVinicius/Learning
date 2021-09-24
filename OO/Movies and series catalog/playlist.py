@@ -11,13 +11,13 @@ class Playlist:
 
     def show_one_program(self, index):
         print(index+1, '-', end=" ")
-        self.__programs[index].print_prog()
+        print(self.__programs[index])
 
     def show_playlist(self):
         print(f"Playlist '{self.__name.title()}':")
         for index, program in enumerate(self.__programs):
             print(index+1, '-', end=" ")
-            program.print_prog()
+            print(program)
 
     def playlist_len(self):
         return len(self.__programs)
