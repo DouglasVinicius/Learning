@@ -9,17 +9,10 @@ class Playlist:
     def name(self):
         return self.__name.title()
 
-    def show_one_program(self, index):
-        print(index+1, '-', end=" ")
-        print(self.__programs[index])
+    def __getitem__(self, item):
+        return self.__programs[item]
 
-    def show_playlist(self):
-        print(f"Playlist '{self.__name.title()}':")
-        for index, program in enumerate(self.__programs):
-            print(index+1, '-', end=" ")
-            print(program)
-
-    def playlist_len(self):
+    def __len__(self):
         return len(self.__programs)
 
     def add_program(self, program):
