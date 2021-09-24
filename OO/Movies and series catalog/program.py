@@ -27,3 +27,6 @@ class Program:
 
     def give_like(self):
         self._likes += 1
+
+    def print_prog(self):
+        print(f"Name: {self._name}, Realease Year: {self._release_year}, Genre: {self._genre}, Current likes: {self._likes}")
