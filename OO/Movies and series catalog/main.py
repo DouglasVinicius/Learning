@@ -60,12 +60,11 @@ def swap_queue(playlists):
         playlists[playlist_index].mv_program(program_index_one, program_index_two)
     except:
         print("Invalid value!")
-    pass
 
 def main():
     continuar = True
     playlists = []
-    
+
     while(continuar):
         try:
             choice = int(input("1 - Create a new playlist     2 - Add a new program to a playlist     3 - Give likes     4 - Swap queue     0 - Exit: "))
