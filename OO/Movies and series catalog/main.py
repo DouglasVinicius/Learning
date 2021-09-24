@@ -1,9 +1,96 @@
 from serie import Serie
 from movie import Movie
+from playlist import Playlist
+
+def create_playlist(playlists):
+    name = input("Name: ")
+    playlists.append(Playlist(name))
+    print("You created a playlist with success!")
+
+def show_current_playlists(playlists):
+    print("CURRENT PLAYLISTS:", end="\n\n")
+    for index, playlist in enumerate(playlists):
+        print(index+1, '-', end=' ')
+        playlist.show_playlist()
+        print()
+
+def add_new_program(playlists):
+    try:
+        playlist_index = int(input("Which playlist do you want add the program (index)? "))-1
+        choice = int(input("1 - Movie     2 - Serie: "))
+
+        if(choice == 1):
+            name = input("New program name: ")
+            release_year = input("New program release year: ")
+            genre = input("New program genre: ")
+            duration_time = input("New program duration: ")
+
+            playlists[playlist_index].add_program(Movie(name, release_year, genre, duration_time))
+        elif(choice == 2):
+            name = input("New program name: ")
+            release_year = input("New program release year: ")
+            genre = input("New program genre: ")
+            seasons = input("New program seasons: ")
+
+            playlists[playlist_index].add_program(Serie(name, release_year, genre, seasons))
+        else:
+            print("Invalid value!")
+    except:
+        print("Invalid value!")
+
+def give_likes(playlists):
+    try:
+        playlist_index = int(input("Which playlist do you want like (index)? "))-1
+        program_index = int(input("Index of a program or 0 for like all the programs in playlist: "))-1
+
+        all = (program_index == 0)
+        if(all):
+            playlists[playlist_index].like_program(program_index)
+        else:
+            playlists[playlist_index].like_playlist()
+    except:
+        print("Invalid value!")
+
+def swap_queue(playlists):
+    try:
+        playlist_index = int(input("Which playlist do you want swap programs (index)? "))-1
+        program_index_one = int(input("Index of a first program that you want swap: "))-1
+        program_index_two = int(input("Index of a second program that you want swap: "))-1
+
+        playlists[playlist_index].mv_program(program_index_one, program_index_two)
+    except:
+        print("Invalid value!")
+    pass
 
 def main():
-    bla_serie = Serie("blabla bla", 1920, ['Ação', 'Aventura'], 3)
-    print(f"Name: {bla_serie.name}", f"Year: {bla_serie.release_year}", f"Seasons: {bla_serie.seasons}", sep="\n")
+    continuar = True
+    playlists = []
+    
+    while(continuar):
+        try:
+            choice = int(input("1 - Create a new playlist     2 - Add a new program to a playlist     3 - Give likes     4 - Swap queue     0 - Exit: "))
+            exit = (choice == 0)
+
+            if(not exit):
+                if(choice == 1):
+                    create_playlist(playlists)
+                elif(choice == 2):
+                    show_current_playlists(playlists)
+                    add_new_program(playlists)
+                elif(choice == 3):
+                    show_current_playlists(playlists)
+                    give_likes(playlists)
+                elif(choice == 4):
+                    show_current_playlists(playlists)
+                    swap_queue(playlists)
+                else:
+                    print("Invalid value!")
+            else:
+                break
+        except:
+            print("Invalid value!")
+
+    print("Thank you!")
 
 if __name__ == "__main__":
     main()
