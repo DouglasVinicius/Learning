@@ -9,5 +9,5 @@ class Movie(Program):
     def duration_time(self):
         return self.__duration_time
 
-    def print_prog(self):
-        print(f"Name: {self._name}, Realease Year: {self._release_year}, Genre: {self._genre}, Duration: {self.__duration_time}min, Current likes: {self._likes}")
+    def __str__(self):
+        return f"Name: {self._name}, Realease Year: {self._release_year}, Genre: {self._genre}, Duration: {self.__duration_time}min, Current likes: {self._likes}"
