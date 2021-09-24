@@ -9,9 +9,12 @@ def create_playlist(playlists):
 
 def show_current_playlists(playlists):
     print("CURRENT PLAYLISTS:", end="\n\n")
-    for index, playlist in enumerate(playlists):
-        print(index+1, '-', end=' ')
-        playlist.show_playlist()
+    for index_playlist, playlist in enumerate(playlists):
+        print(index_playlist+1, '-', end=' ')
+        print(f"Playlist: {playlist.name}, size: {len(playlist)}:")
+        for index_programs, program in enumerate(playlist):
+            print(index_programs+1, '-', end=" ")
+            print(program)
         print()
 
 def add_new_program(playlists):
@@ -67,21 +70,20 @@ def main():
 
     while(continuar):
         try:
-            choice = int(input("1 - Create a new playlist     2 - Add a new program to a playlist     3 - Give likes     4 - Swap queue     0 - Exit: "))
+            choice = int(input("1 - Create a new playlist     2 - Add a new program to a playlist     3 - Give likes     4 - Swap queue     5 - Show playlists     0 - Exit: "))
             exit = (choice == 0)
 
             if(not exit):
                 if(choice == 1):
                     create_playlist(playlists)
                 elif(choice == 2):
-                    show_current_playlists(playlists)
                     add_new_program(playlists)
                 elif(choice == 3):
-                    show_current_playlists(playlists)
                     give_likes(playlists)
                 elif(choice == 4):
-                    show_current_playlists(playlists)
                     swap_queue(playlists)
+                elif(choice == 5):
+                    show_current_playlists(playlists)
                 else:
                     print("Invalid value!")
             else:
