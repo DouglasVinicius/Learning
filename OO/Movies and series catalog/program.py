@@ -2,7 +2,7 @@ class Program:
     def __init__(self, name, release_year, genre):
         self._name = name
         self._release_year = release_year
-        self._genre = [x.title() for x in genre]
+        self._genre = genre
         self._likes = 0
 
     @property
@@ -23,10 +23,10 @@ class Program:
 
     @genre.setter
     def genre(self, genre):
-        self._genre = [x.title() for x in genre]
+        self._genre = genre
 
     def give_like(self):
         self._likes += 1
 
-    def print_prog(self):
-        print(f"Name: {self._name}, Realease Year: {self._release_year}, Genre: {self._genre}, Current likes: {self._likes}")
+    def __str__(self):
+        return f"Name: {self._name}, Realease Year: {self._release_year}, Genre: {self._genre}, Current likes: {self._likes}"
