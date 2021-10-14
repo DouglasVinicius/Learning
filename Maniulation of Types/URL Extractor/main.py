@@ -1,10 +1,10 @@
 # Fazer um código que auxilie a identificar os itens em uma URL
 
-from URL_extrator import URL_extrator
+from URL_extractor import URL_extractor
 
 def main():
-    url1 = URL_extrator("www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100", "bytebank", ".com")
-    url2 = URL_extrator("www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100", "bytebank", ".com")
+    url1 = URL_extractor("www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100", "bytebank", ".com")
+    url2 = URL_extractor("www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100", "bytebank", ".com")
 
     
     print(url1 == url2)
