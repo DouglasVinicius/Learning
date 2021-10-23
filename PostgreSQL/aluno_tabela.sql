@@ -61,6 +61,7 @@ SELECT * FROM aluno
 /*Deletando linhas na tabela que se encaixem na requisição*/
 DELETE FROM aluno
 	WHERE idade >= 18;
+<<<<<<< HEAD:PostgreSQL/aluno_tabela.sql
 
 /*Ordenando valores pelo campo 1 requisitado e alterando a forma de os mostrar com o 'AS'*/
 SELECT 
@@ -136,3 +137,5 @@ SELECT nome AS "Nome do aluno", idade AS "Idade do Aluno"
 	ORDER BY idade DESC;              /*DESC = Decrescente*/
 	
 	
+=======
+>>>>>>> 96d670d30c1b32d0198a336b5cd6d4ed4611c96e:PostgreSQL/aluno_tabela.sql
