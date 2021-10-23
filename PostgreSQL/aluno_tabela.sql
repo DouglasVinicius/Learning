@@ -1,4 +1,3 @@
-
 /*Criando uma nova tabela com valores comumente utilizados*/
 CREATE TABLE aluno(
 	id SERIAL,
@@ -61,7 +60,6 @@ SELECT * FROM aluno
 /*Deletando linhas na tabela que se encaixem na requisição*/
 DELETE FROM aluno
 	WHERE idade >= 18;
-<<<<<<< HEAD:PostgreSQL/aluno_tabela.sql
 
 /*Ordenando valores pelo campo 1 requisitado e alterando a forma de os mostrar com o 'AS'*/
 SELECT 
@@ -135,3 +133,5 @@ SELECT nome AS "Nome do aluno", idade AS "Idade do Aluno"
 		(matricula_trancada = false or
 		 matricula_trancada IS NULL)
 	ORDER BY idade DESC;              /*DESC = Decrescente*/
+	
+	
