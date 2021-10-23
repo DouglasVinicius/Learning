@@ -1,3 +1,5 @@
+
+/*Criando uma nova tabela com valores comumente utilizados*/
 CREATE TABLE aluno(
 	id SERIAL,
 	idade INTEGER,
@@ -12,6 +14,7 @@ CREATE TABLE aluno(
 	data_matricula timestamp
 );
 
+/*Inserindo valores na tabela identificando os campos a serem preenchidos*/
 INSERT INTO aluno (
 	idade,
 	mensalidade,
@@ -36,11 +39,14 @@ INSERT INTO aluno (
 	'2018-12-20 10:00:00'
 );
 
+/*Buscando todos os elementos da tabela*/
 SELECT * FROM aluno;
 
+/*Buscando elementos de acordo com algum parâmetro*/
 SELECT * FROM aluno
 	WHERE matricula_trancada = FALSE;
 
+/*Atualizando colunas na tabela que se encaixam no parâmetro passado*/
 UPDATE aluno
 	SET
 		data_matricula = '2021-01-25',
@@ -48,8 +54,85 @@ UPDATE aluno
 	WHERE
 		matricula_trancada = FALSE;
 
+/*Selecionando itens na tabela de acordo com um parâmetro (verificando se tenho os itens que quero para deletar)*/
 SELECT * FROM aluno
 	WHERE idade >= 18;
 
+/*Deletando linhas na tabela que se encaixem na requisição*/
 DELETE FROM aluno
 	WHERE idade >= 18;
+
+/*Ordenando valores pelo campo 1 requisitado e alterando a forma de os mostrar com o 'AS'*/
+SELECT 
+	nome AS "Nome do aluno",
+	idade AS "Idade do Aluno",
+	matricula_trancada
+FROM aluno
+ORDER BY 1;
+
+/*Inserindo mais alguns nomes para testes (restantes dos campos são preenchidos com null)*/
+INSERT INTO aluno (nome)
+VALUES('Rafael');
+INSERT INTO aluno (nome)
+VALUES('Gustavo');
+INSERT INTO aluno (nome)
+VALUES('Vinicius');
+INSERT INTO aluno (nome)
+VALUES('Mariana');
+INSERT INTO aluno (nome)
+VALUES('Magino');
+INSERT INTO aluno (nome)
+VALUES('Vitor');
+
+/*Exemplos de filtragens nas buscas por campos*/
+SELECT * 
+	FROM 
+		aluno
+	WHERE
+		nome != 'Rafael' and
+		nome != 'Douglas';
+		
+SELECT nome
+	FROM  
+		aluno
+	WHERE
+		nome = 'Douglas' or
+		nome = 'Gustavo';
+		
+SELECT nome
+	FROM
+		aluno
+	WHERE
+		nome LIKE 'Ma%' or
+		nome LIKE 'Ra___l';
+		
+SELECT nome
+	FROM
+		aluno
+	WHERE
+		nome LIKE '%u%a%';
+		
+SELECT nome, idade
+	FROM
+		aluno
+	WHERE
+		nome IS NOT NULL and
+		idade IS NOT null;       /*NULL == null == Null ...*/
+		
+SELECT nome AS "Nome do aluno", mensalidade AS "Mensalidade"
+	FROM
+		aluno
+	WHERE
+		idade >= 18 and
+		mensalidade < 1000.0;
+		
+SELECT nome AS "Nome do aluno", idade AS "Idade do Aluno"
+	FROM
+		aluno
+	WHERE
+		idade BETWEEN 18 AND 21 and    /*Inclui o próprio 18 e 21*/
+		(matricula_trancada = false or
+		 matricula_trancada IS NULL)
+	ORDER BY idade DESC;              /*DESC = Decrescente*/
+	
+	
